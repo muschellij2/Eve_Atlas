@@ -59,7 +59,11 @@ and the response
 > Susumu
 > 
 
-Now as you can see in ![MNI_Compared_to_Eve.png](MNI_Compared_to_Eve.png) that they agree relatively well if you drop the `x=182`, `y=218`, and `z=182` slices of the MNI template (or similarly zero pad the Eve template/atlas).  For those who cannot manipulate images easily (such as dropping slices), this is a problem.  
+Now as you can see in 
+
+![MNI_Compared_to_Eve.png](MNI_Compared_to_Eve.png) 
+
+that they agree relatively well if you drop the `x=182`, `y=218`, and `z=182` slices of the MNI template (or similarly zero pad the Eve template/atlas).  For those who cannot manipulate images easily (such as dropping slices), this is a problem.  
 
 ### Solutions for use with the MNI Template
 The possible solutions are as follows:
@@ -72,7 +76,11 @@ The possible solutions are as follows:
 
 ## Comparison of Eve to Rorden T1 image
 ## Problem
-Unlike the MNI template, the Clinical Toolbox dimensions is 181x217x181, using the bounding box: `[-90, -126, -72; 90, 90, 108]`.  The problem, as demonstrated by ![Rorden_Compared_to_Eve_mask.png](Rorden_Compared_to_Eve_mask.png) is that the images do not overlap very well.  This is because the Rorden T1 template was not intended to match exactly the MNI template, as its purpose is to supercede the MNI template for aging subjects.  Therefore, if using the Rorden template in combination with the Eve atlas, there may be some mismatch of cortical structures.
+Unlike the MNI template, the Clinical Toolbox dimensions is 181x217x181, using the bounding box: `[-90, -126, -72; 90, 90, 108]`.  The problem, as demonstrated by 
+
+![Rorden_Compared_to_Eve_mask.png](Rorden_Compared_to_Eve_mask.png) 
+
+is that the images do not overlap very well.  This is because the Rorden T1 template was not intended to match exactly the MNI template, as its purpose is to supercede the MNI template for aging subjects.  Therefore, if using the Rorden template in combination with the Eve atlas, there may be some mismatch of cortical structures.
 
 ## Solution
 1.  Use `JHU_MNI_SS_T1_brain_to_Rorden_brain_DRAMMS.nii.gz`, which has been non-linearly transformed to Rorden T1 space using DRAMMS, and thus has the dimension of the Rorden template.

@@ -59,18 +59,21 @@ writeNIfTI(eve_large,
 double_ortho(mni_brain_small, eve)
 png("MNI_Compared_to_Eve.png", type= "cairo")
 	ortho2(mni_brain_small, 
-		eve, col.y=alpha(hotmetal(), 0.25))
+		eve, col.y=alpha(hotmetal(), 0.25), 
+		text = "MNI T1 overlaid with Eve T1")
 dev.off()
 
 png("MNI_Compared_to_Eve.png", type= "cairo")
 	ortho2(mni_brain_small, 
 		eve, col.y=alpha(hotmetal(), 0.25), 
-		xyz = c(70, 95, 50))
+		xyz = c(70, 95, 50), 
+		text = "MNI T1 overlaid with Eve T1")
 dev.off()
 
 png("MNI_Compared_to_Eve_mask.png", type= "cairo")
 	ortho2(mni_brain_small, 
-		eve > 0, col.y=alpha("red", 0.25))
+		eve > 0, col.y=alpha("red", 0.25), 
+		text = "MNI T1 overlaid with Eve Brain Mask")
 dev.off()
 
 eve_mni = readNIfTI(

@@ -58,7 +58,6 @@ res = mapply(function(source, outfile){
     source = source,
     outfile = outfile,
     def = def,
-    template = template,
     interpolation = interpolation,
     verbose = verbose,
     retimg = retimg

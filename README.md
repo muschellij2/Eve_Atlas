@@ -17,3 +17,56 @@ Two methods were used for transforming the data: Symmetric Normalization (SyN) [
 
 The estimated transformation was used to warp the atlases to the associated space and a nearest-neighbor interpolation was used to create labels.
 
+## Reason for Use
+### Comparison of Eve to MNI image
+The Eve atlas has been used previously to describe anatomical locations of the brain.  One problem is that the Eve atlas and the MNI 152 from FSL (and other MNI data) are not necessarily located in the same space.  See [Dr. Mori's discussion of this issue with the dimensions](http://lists.mristudio.org/pipermail/mristudio-users/2009/000709.html): 
+
+> Hello,
+> 
+>  
+> 
+> The ICBM-152 Atlas that comes from the UCLA web site has dimensions of 182 x
+> 218 x 182 .  Within DTI Studio it is 181 x 217 x 181.  There seems to be a
+> single slice  difference between both templates?  Where would the single
+> slice need to be added for both templates to match?
+> 
+>  
+> 
+> Regards,
+> 
+> Arun
+
+and the response 
+
+> Hi Arun,
+>
+> 
+> 
+> It is likely that the difference is just 0 padding at the 182th, 218th, and
+> 182th line. You can convert our 181x217x181 atlas to 182x218x182 using the
+> "Crop" function in Landmarker. Another possibility is that it was
+> interpolated, which can also be done by Landmarker. You may want to make
+> sure by subtracting the images (you can do it in RoiEditor). 
+> 
+>  
+> 
+> We also got ICBM-152 from UCLA and don't know why there are two versions
+> with different dimensions. 
+> 
+>  
+> 
+> Susumu
+> 
+
+Now as you can see in ![MNI_Compared_to_Eve.png](MNI_Compared_to_Eve.png) that they agree relatively well if you drop the `x=182`, `y=218`, and `z=182` slices of the MNI template (or similarly zero pad the Eve template/atlas).  For those who cannot manipulate images easily (such as dropping slices), this is a problem.  
+
+### Solutions for use with the MNI Template
+The possible solutions are as follows:
+
+1.  Use `JHU_MNI_SS_T1_brain_182x218x182.nii.gz`, which has zeros padded to the last dimension of the image
+2.  Use `MNI152_T1_1mm_brain_181x217x181.nii.gz`, which has the last slice of each dimension removed
+3.  
+
+
+### Comparison of Eve to Rorden T1 image
+So 

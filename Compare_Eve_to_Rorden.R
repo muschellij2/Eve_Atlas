@@ -16,7 +16,7 @@ eve = readNIfTI(
 png("Rorden_Compared_to_Eve_mask.png", type= "cairo")
 	ortho2(rorden_brain, 
 		eve > 0, col.y=alpha("red", 0.25), 
-		text = "Rorden T1 overlaid with Eve Brain Mask")
+		text = "Rorden T1 overlaid\nwith Eve Brain Mask")
 dev.off()
 
 

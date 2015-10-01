@@ -29,7 +29,7 @@ template.file = switch(template_name,
                        "Rorden" = rorden_file,
                        "MNI"= mni_file)
 
-rorden_brain = readNIfTI(rorden_file, 
+rorden_brain = readNIfTI(template.file, 
                          reorient = FALSE)
 
 out_eve = paste0(nii.stub(eve.t1), 

@@ -2,7 +2,9 @@ rm(list = ls())
 library(extrantsr)
 library(fslr)
 eve_dir = path.expand("~/Dropbox/RegLib_C26_MoriAtlas")
-mni_dir = path.expand("/usr/local/fsl/data/standard")
+mni_dir = path.expand(file.path(fsldir(), 
+  "data", "standard"))
+
 eve.t1 = file.path(eve_dir, 
                    "JHU_MNI_SS_T1_brain.nii.gz")
 eve_brain = readNIfTI(eve.t1, 
@@ -16,7 +18,9 @@ mni_brain = readNIfTI(mni_file,
 template_name = "MNI"
 
 labels = file.path(eve_dir, 
-                   paste0("JHU_MNI_SS_WMPM_Type-", c("I", "II", "III"), 
+                   paste0(
+                    "JHU_MNI_SS_WMPM_Type-", 
+                    c("I", "II", "III"), 
                           ".nii.gz"))
 
 

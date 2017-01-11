@@ -13,8 +13,8 @@ mni_file = file.path(mni_dir,
 mni_brain = readNIfTI(mni_file, 
                       reorient = FALSE)
 
-# template_name = "Rorden"
-template_name = "MNI"
+template_name = "Rorden"
+# template_name = "MNI"
 
 labels = file.path(eve_dir, 
                    paste0(
@@ -70,6 +70,35 @@ if (!all(file.exists(out_labels))) {
       retimg = retimg
       )
     }, labels, out_labels)
+}
+
+v2lab = file.path(eve_dir,
+                  "JHU_MNI_SS_WMPM_Type-II_V2.0.nii.gz")
+
+v2_out_labels = paste0(
+  nii.stub(v2lab), 
+                    "_to_", 
+                    template_name, 
+                    "_brain_DRAMMS.nii.gz")
+
+if (!all(file.exists(v2_out_labels))) {
+  source = v2lab[1]
+  outfile = v2_out_labels[1]
+  template = template.file
+  interpolation = "nearest.neighbor"
+  retimg = FALSE
+  verbose = TRUE
+  
+  res = mapply(function(source, outfile){
+    dramms_warp(
+      source = source,
+      outfile = outfile,
+      def = def,
+      interpolation = interpolation,
+      verbose = verbose,
+      retimg = retimg
+    )
+  }, v2lab, v2_out_labels)
 }
 
 

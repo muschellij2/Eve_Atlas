@@ -14,14 +14,17 @@ mni_file = file.path(mni_dir,
 mni_brain = readNIfTI(mni_file, 
                       reorient = FALSE)
 
-# template_name = "Rorden"
-template_name = "MNI"
+template_name = "Rorden"
+# template_name = "MNI"
 
 labels = file.path(eve_dir, 
                    paste0(
                     "JHU_MNI_SS_WMPM_Type-", 
                     c("I", "II", "III"), 
                           ".nii.gz"))
+v2lab = file.path(eve_dir,
+                  "JHU_MNI_SS_WMPM_Type-II_V2.0.nii.gz")
+labels = c(labels, v2lab)
 
 
 out_labels = paste0(nii.stub(labels), 
@@ -41,7 +44,7 @@ template.file = switch(template_name,
                        "MNI" = mni_file)
 
 
-out_eve = ants_regwrite( 
+out_eve = registration( 
 	filename = eve_brain, 
 	template.file = template.file, 
 	interpolator = "NearestNeighbor", 
@@ -49,4 +52,5 @@ out_eve = ants_regwrite(
 	typeofTransform = "SyN",
 	other.files = labels, 
 	other.outfiles = out_labels)
+
 

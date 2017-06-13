@@ -31,7 +31,7 @@ if (!file.exists(outfile)) {
   
   # SPM12 Segmentation
   fname = "JHU_MNI_SS_T1.nii.gz"
-  spm_seg = spm12_segment(fname)
+  spm_seg = spm12_segment(fname)$outfiles
   seg2 = spm_probs_to_seg(spm_seg)
   # only 1-3
   masker = niftiarr(seg2, seg2 %in% 1:3)

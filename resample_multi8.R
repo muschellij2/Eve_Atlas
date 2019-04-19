@@ -79,3 +79,15 @@ writer("scct_unsmooth.nii.gz")
 writer("betsct1_unsmooth.nii.gz")
 writer("sct1_unsmooth.nii.gz")
 
+
+writer = function(fname) {
+  img = resample_image(fname,
+                       parameters = rep(128, 3),
+                       parameter_type = "voxels", interpolator = "linear")
+  stopifnot(all(dim(img) == 128))
+  writenii(img, paste0(nii.stub(fname), "_128x128x128.nii.gz"))
+}
+writer("scct_unsmooth_SS_0.01.nii.gz")
+writer("scct_unsmooth.nii.gz")
+writer("betsct1_unsmooth.nii.gz")
+writer("sct1_unsmooth.nii.gz")

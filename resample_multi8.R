@@ -79,15 +79,35 @@ writer("scct_unsmooth.nii.gz")
 writer("betsct1_unsmooth.nii.gz")
 writer("sct1_unsmooth.nii.gz")
 
+fname = "scct_unsmooth_SS_0.01.nii.gz"
 
 writer = function(fname) {
   img = resample_image(fname,
-                       parameters = rep(128, 3),
-                       parameter_type = "voxels", interpolator = "linear")
+                       parameters = rep(1.5, 3),
+                       parameter_type = "mm", interpolator = "linear")
+  img = dropEmptyImageDimensions(img)
+  target_dim = rep(128, 3)
+  kdim = (target_dim - dim(img))/2
+  img = zero_pad(img, kdim = kdim)
   stopifnot(all(dim(img) == 128))
   writenii(img, paste0(nii.stub(fname), "_128x128x128.nii.gz"))
 }
 writer("scct_unsmooth_SS_0.01.nii.gz")
-writer("scct_unsmooth.nii.gz")
-writer("betsct1_unsmooth.nii.gz")
-writer("sct1_unsmooth.nii.gz")
+
+# writer = function(fname) {
+#   img = resample_image(fname,
+#                        parameters = rep(1.5, 3),
+#                        parameter_type = "mm", interpolator = "linear")
+#   img = dropEmptyImageDimensions(img > 500, other.imgs = img)
+#   img = img$other.imgs
+#
+#   target_dim = rep(128, 3)
+#   kdim = (target_dim - dim(img))/2
+#   img = zero_pad(img, kdim = kdim)
+#   stopifnot(all(dim(img) == 128))
+#   writenii(img, paste0(nii.stub(fname), "_128x128x128.nii.gz"))
+# }
+#
+# writer(fname = "scct_unsmooth.nii.gz")
+# writer("betsct1_unsmooth.nii.gz")
+# writer("sct1_unsmooth.nii.gz")

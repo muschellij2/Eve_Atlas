@@ -1,11 +1,6 @@
 # Eve Atlas 
 This repository contains the "Eve Atlas" from the Johns Hopkins University School of Medicine, Department of Radiology, Center for Brain Imaging Science.  It is based on a single-subject data as described in Oishi et al, 2009. There are co-registered T1 (MPRAGE), T2, with associated atlases and look up tables (LUT files).  The original format is `nrrd`, which was converted to `NIfTI` using [`Slicer`](http://slicer.org/).  All original images have 181x217x181 / 1x1x1 mm dimensions.
 
-# Original Data
-Eve atlas downloaded from Slicer [here](http://w.slicer.org/publications/item/view/1883).  
-
-The direct download of the zip file is located at [http://w.slicer.org/publications/bitstream/download/4779](http://w.slicer.org/publications/bitstream/download/4779).  
-
 # Clinical Toolbox
 The 2 files `sct1_unsmooth.nii.gz` and `betsct1_unsmooth.nii.gz` correspond to the T1 and skull-stripped (with BET) T1 image from the [Clinical toolbox for SPM](http://www.nitrc.org/projects/clinicaltbx/) from Christopher Rorden as described in [doi: 10.1016/j.neuroimage.2012.03.020](http://dx.doi.org/10.1016/j.neuroimage.2012.03.020).  This is referred to as the Rorden template.
 
